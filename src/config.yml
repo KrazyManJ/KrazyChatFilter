@@ -1,0 +1,49 @@
+#words to censore
+swear words:
+  - fuck
+  - shit
+  - cunt
+  - fucker
+  - motherfucker
+
+#used symbol to censore
+censore symbol: "*"
+
+#block characters between characters in swear words, put them into square brackets => []
+#if you dont need to block anything, you just leave empty square brackets in option
+# \s = space
+# \- = dash, but in regexp its used for certain specification so you need to parse it with \ in front of it
+# Example: when bracket includes \- (dash symbol) and player types "shi-t" it will be censored
+middle-char symbols: '[.\s\-,]'
+
+#When its true, all middle characters are ignored in censore and remove out
+#Example: typed "fu---c-k" with this option resolve to "****" in chat
+#         typed "fu---c-k" without this option resolve to "********" in chat
+ignore middle-char in censor: true
+
+#If your language has some diacritic, it will include it in censore
+#Example: typed "shit" and "shít" both counts when this option is on
+diacritic: true
+
+#If someone type sh1t instead of shit, will plugin handle this?
+number as letters: true
+
+#It will censore when you use "shit" or "shyt" no matter what type of i/y you will use
+i and y exchange: true
+
+#Censore arguments in those commands
+censore command text: true
+commands:
+  - msg
+  - tell
+
+#Flood block:
+flood: true
+#Lenght of flood to short to one character
+flood size: 5
+
+#Capslock block:
+capslock: true
+size of message to capslock: 5
+#Percentage of caps lock to downscale whole message:
+capslock percentage: 50

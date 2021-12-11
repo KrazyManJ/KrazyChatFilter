@@ -1,0 +1,10 @@
+name: KrazyChatFilter
+author: KrazyManJ
+main: me.KrazyManJ.KrazyChatFilter.Main
+version: 1.0.0
+api-version: 1.17
+commands:
+  krazychatfilter:
+    aliases: kchf
+    permission: krazychatfilter.admin
+    description: reloads config
