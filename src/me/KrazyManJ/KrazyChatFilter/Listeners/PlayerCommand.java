@@ -14,8 +14,8 @@ public class PlayerCommand implements Listener {
         if (event.getMessage().contains(" ")){
             List<String> commands = Main.getInstance().getConfig().getStringList("commands");
             String command = event.getMessage().substring(1).split(" ", 2)[0];
-            String args = String.join("", event.getMessage().substring(1).split(" ", 2)[1]);
             if (commands.contains(command)){
+                String args = String.join("", event.getMessage().substring(1).split(" ", 2)[1]);
                 event.setMessage("/"+command+" "+ Censore.Message(args));
             }
         }

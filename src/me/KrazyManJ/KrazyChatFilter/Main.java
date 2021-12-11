@@ -18,7 +18,7 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         Bukkit.getPluginManager().registerEvents(new PlayerChat(), this);
-        Bukkit.getPluginManager().registerEvents(new PlayerCommand(), this);
+        if(this.getConfig().getBoolean("censore command text")) Bukkit.getPluginManager().registerEvents(new PlayerCommand(), this);
         saveDefaultConfig();
         instance = this;
         Censore.reloadRegex();
@@ -36,7 +36,7 @@ public class Main extends JavaPlugin {
             if (sender instanceof Player) {
                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7[&f&lKrazyChatFilter&7] &ePlugin was successfully reloaded!"));
             }
-            getLogger().log(Level.INFO, "[KrazyChatFilter] Plugin was successfully reloaded!");
+            instance.getLogger().log(Level.INFO, "Plugin was successfully reloaded!");
             return true;
         }
         return false;
