@@ -1,7 +1,6 @@
 package me.KrazyManJ.KrazyChatFilter;
 
 import org.apache.commons.lang.StringUtils;
-import org.bukkit.Bukkit;
 
 import java.util.*;
 import java.util.regex.Matcher;
@@ -55,6 +54,7 @@ public class Censore {
     public static List<Pattern> getSwearRegex(){
         return swearRegex;
     }
+
     public static String flood(String input){
         Matcher match = Pattern.compile("(?i)(.)\\1{"+(Main.getInstance().getConfig().getInt("flood size")-1)+",}").matcher(input);
         while (match.find()) input = input.replace(match.group(),match.group(1));

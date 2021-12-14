@@ -2,6 +2,7 @@ package me.KrazyManJ.KrazyChatFilter;
 
 import me.KrazyManJ.KrazyChatFilter.Listeners.PlayerChat;
 import me.KrazyManJ.KrazyChatFilter.Listeners.PlayerCommand;
+import me.KrazyManJ.KrazyChatFilter.Listeners.PlayerDisconnect;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -18,6 +19,7 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         Bukkit.getPluginManager().registerEvents(new PlayerChat(), this);
+        if(this.getConfig().getBoolean("antispam")) Bukkit.getPluginManager().registerEvents(new PlayerDisconnect(), this);
         if(this.getConfig().getBoolean("censore command text")) Bukkit.getPluginManager().registerEvents(new PlayerCommand(), this);
         saveDefaultConfig();
         instance = this;

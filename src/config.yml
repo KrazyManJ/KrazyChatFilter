@@ -47,3 +47,5 @@ capslock: true
 size of message to capslock: 5
 #Percentage of caps lock to downscale whole message:
 capslock percentage: 50
+
+antispam: true
