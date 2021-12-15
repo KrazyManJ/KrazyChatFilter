@@ -10,6 +10,7 @@ public class Censore {
     public static String Message(String message){
         if (Main.getInstance().getConfig().getBoolean("flood")) message = flood(message);
         if (Main.getInstance().getConfig().getBoolean("capslock") && message.length() >= Main.getInstance().getConfig().getInt("size of message to capslock")) message = capslock(message);
+        if (Main.getInstance().getConfig().getBoolean("ipblock")) message = removeIPs(message);
         for (Pattern regex : Censore.getSwearRegex()) {
             Matcher match = regex.matcher(message);
             while (match.find()) {
@@ -64,6 +65,15 @@ public class Censore {
         int capscount = 0;
         for (int i = 0; i < input.length() ; i++) if (Character.isUpperCase(input.charAt(i))) capscount++;
         if (capscount/(float)input.length()*100 >= Main.getInstance().getConfig().getInt("capslock percentage")) input = input.toLowerCase();
+        return input;
+    }
+    public static String removeIPs(String input){
+        Matcher match = Pattern.compile("([0-9]{1,3}\\.){3}[0-9]{1,3}").matcher(input);
+        while (match.find()) {
+            String found = input.substring(match.start(),match.end());
+            input = input.replace(found, StringUtils.repeat("*", found.length()));
+            match = Pattern.compile("([0-9]{1,3}\\.){3}[0-9]{1,3}").matcher(input);
+        }
         return input;
     }
 }

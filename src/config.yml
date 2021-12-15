@@ -49,3 +49,5 @@ size of message to capslock: 5
 capslock percentage: 50
 
 antispam: true
+
+ipblock: true
